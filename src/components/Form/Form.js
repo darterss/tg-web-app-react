@@ -6,12 +6,13 @@ const Form = () => {
     const [street, setStreet] = useState();
     const [subject, setSubject] = useState('physical');
     const {tg} = useTelegram();
+    tg.MainButton.show();
 
-    /*useEffect(() => {
+    useEffect(() => {
         tg.MainButton.setParams({
             text: 'Отправить данные'
         })
-    })*/
+    })
 
     /*useEffect(() => { //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         if (!street || !country) {

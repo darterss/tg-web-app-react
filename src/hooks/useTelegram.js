@@ -1,7 +1,5 @@
-import { TelegramWebAppContainer } from '@telegram-web-app/core';
-
-const telegram = new TelegramWebAppContainer();
-const tg = telegram.WebApp;
+const tg = window.Telegram.WebApp;
+console.log(tg);
 
 export function useTelegram () {
     const onClose = () => {

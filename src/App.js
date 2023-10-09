@@ -9,6 +9,7 @@ import Form from "./components/Form/Form";
 function App() {
     const {tg} = useTelegram();
 
+
     useEffect(() => {
         tg.ready();
     });
