@@ -13,13 +13,13 @@ const Form = () => {
         })
     })
 
-    /*useEffect(() => { //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    useEffect(() => { //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         if (!street || !country) {
             tg.MainButton.hide();
         } else {
             tg.MainButton.show();
         }
-    }, [country, street])*/
+    }, [country, street])
 
     const onChangeCountry = (e) => {
         setCountry(e.target.value)
