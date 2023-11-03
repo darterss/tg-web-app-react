@@ -6,21 +6,21 @@ const Form = () => {
     const [street, setStreet] = useState();
     const [subject, setSubject] = useState('physical');
     const {tg} = useTelegram();
-    tg.MainButton.show();
+    //tg.MainButton.show();
 
     useEffect(() => {
         tg.MainButton.setParams({
-            text: 'Отправить данные'
-        })
+            text: 'Отправить данные!!!'
+        }, [])
     })
 
-    /*useEffect(() => { //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    useEffect(() => { //!!!!!!!!!!!!!!!!!!!!!!! not deploing !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         if (!street || !country) {
             tg.MainButton.hide();
         } else {
             tg.MainButton.show();
         }
-    }, [country, street])*/
+    }, [country, street])
 
     const onChangeCountry = (e) => {
         setCountry(e.target.value)
