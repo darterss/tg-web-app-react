@@ -10,17 +10,17 @@ const Form = () => {
 
     useEffect(() => {
         tg.MainButton.setParams({
-            text: 'Отправить данные!!!'
+            text: 'Отправить данные'
         }, [])
     })
 
-    useEffect(() => { //!!!!!!!!!!!!!!!!!!!!!!! not deploing !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ /*   useEffect(() => { //!!!!!!!!!!!!!!!!!!!!!!! not deploing !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         if (!street || !country) {
             tg.MainButton.hide();
         } else {
             tg.MainButton.show();
         }
-    }, [country, street])
+    }, [country, street])*/
 
     const onChangeCountry = (e) => {
         setCountry(e.target.value)
