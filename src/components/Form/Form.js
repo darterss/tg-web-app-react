@@ -17,9 +17,9 @@ const Form = () => {
     }, [country, street, subject, tg]) // without tg
 
     useEffect( () => {
-        tg.onEvent('mainButtonClicked', onSendData())
+        tg.onEvent('mainButtonClicked', onSendData)
         return () => {
-            tg.offEvent('mainButtonClicked', onSendData())
+            tg.offEvent('mainButtonClicked', onSendData)
         }
     }, [onSendData, tg]) // without tg
 
