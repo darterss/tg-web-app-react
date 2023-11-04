@@ -4,7 +4,7 @@ import {useTelegram} from "../../hooks/useTelegram";
 const Form = () => {
     const [country, setCountry] = useState();
     const [street, setStreet] = useState();
-    const [subject, setSubject] = useState('physical');
+    const [subject, setSubject] = useState('physical - init');
     const {tg} = useTelegram();
 
     const onSendData = useCallback( () => {
@@ -35,7 +35,7 @@ const Form = () => {
         } else {
             tg.MainButton.show();
         }
-    }, [country, street, tg.MainButton])
+    }, [country, street, tg.MainButton]) // without tg
 
     const onChangeCountry = (e) => {
         setCountry(e.target.value)
