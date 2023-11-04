@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useState} from 'react';
 import './Form.css'
 import {useTelegram} from "../../hooks/useTelegram";
 const Form = () => {
-    const [country, setCountry] = useState('null', 'null', 'null');
+    const [country, setCountry] = useState();
     const [street, setStreet] = useState();
     const [subject, setSubject] = useState('physical');
     const {tg} = useTelegram();
