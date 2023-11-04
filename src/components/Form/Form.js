@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import './Form.css'
 import {useTelegram} from "../../hooks/useTelegram";
 const Form = () => {
@@ -6,7 +6,22 @@ const Form = () => {
     const [street, setStreet] = useState();
     const [subject, setSubject] = useState('physical');
     const {tg} = useTelegram();
-    //tg.MainButton.show();
+
+    const onSendData = useCallback( () => {
+        const data = {
+            country,
+            street,
+            subject
+        }
+        tg.sendData(JSON.stringify(data))
+    }, [])
+
+    useEffect( () => {
+        tg.onEvent('mainButtonClicked', onSendData())
+        return () => {
+            tg.offEvent('mainButtonClicked', onSendData())
+        }
+    }, [])
 
     useEffect(() => {
         tg.MainButton.setParams({
@@ -14,13 +29,15 @@ const Form = () => {
         }, [])
     })
 
-    useEffect(() => { //!!!!!!!!!!!!!!!!!!!!!!! not deploing !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    useEffect(() => {
         if (!street || !country) {
             tg.MainButton.hide();
         } else {
             tg.MainButton.show();
         }
-    }/*, [country, street]*/)
+    }/*, [country, street] - если добавляю это, то выводит ошибку:
+     Line 23:8:  React Hook useEffect has a missing dependency: 'tg.MainButton'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+    */)
 
     const onChangeCountry = (e) => {
         setCountry(e.target.value)
