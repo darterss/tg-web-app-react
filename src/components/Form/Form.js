@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useState} from 'react';
 import './Form.css'
 import {useTelegram} from "../../hooks/useTelegram";
 const Form = () => {
-    const [country, setCountry] = useState();
+    const [country, setCountry] = useState('null', 'null', 'null');
     const [street, setStreet] = useState();
     const [subject, setSubject] = useState('physical');
     const {tg} = useTelegram();
@@ -14,14 +14,16 @@ const Form = () => {
             subject
         }
         tg.sendData(JSON.stringify(data))
-    }, [])
+    }, [country,
+        street,
+        subject, tg])
 
     useEffect( () => {
         tg.onEvent('mainButtonClicked', onSendData())
         return () => {
             tg.offEvent('mainButtonClicked', onSendData())
         }
-    }, [])
+    }/*, []*/)
 
     useEffect(() => {
         tg.MainButton.setParams({
