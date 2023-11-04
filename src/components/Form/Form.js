@@ -14,16 +14,14 @@ const Form = () => {
             subject
         }
         tg.sendData(JSON.stringify(data))
-    }, [country,
-        street,
-        subject, tg])
+    }, [country, street, subject, tg]) // without tg
 
     useEffect( () => {
         tg.onEvent('mainButtonClicked', onSendData())
         return () => {
             tg.offEvent('mainButtonClicked', onSendData())
         }
-    }, [onSendData, tg])
+    }, [onSendData, tg]) // without tg
 
     useEffect(() => {
         tg.MainButton.setParams({
@@ -37,9 +35,7 @@ const Form = () => {
         } else {
             tg.MainButton.show();
         }
-    }/*, [country, street] - если добавляю это, то выводит ошибку:
-     Line 23:8:  React Hook useEffect has a missing dependency: 'tg.MainButton'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
-    */)
+    }, [country, street, tg.MainButton])
 
     const onChangeCountry = (e) => {
         setCountry(e.target.value)
