@@ -6,7 +6,7 @@ const Form = () => {
     const [street, setStreet] = useState();
     const [subject, setSubject] = useState('physical');
     const {tg} = useTelegram();
-    //tg.MainButton.show();
+    tg.MainButton.show();
 
     useEffect(() => {
         tg.MainButton.setParams({
